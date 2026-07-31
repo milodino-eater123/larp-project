@@ -6,8 +6,14 @@ export function ProjectProvider({children}){
     function addProject(name){
         setProjects(prev=>[...prev,{name:name,content:'',id:crypto.randomUUID()}])
     }
+    function deleteProject(projectId){
+        setProjects(prev=>prev.filter(proj=>proj.id !== projectId))
+    }
+    function updateProjectContent(projectId,newContent){
+        setProjects(prev=>prev.map(proj=> proj.id === projectId ? {...proj,content:newContent} : proj))
+    }
     return (
-        <ProjectContext.Provider value={{projects,addProject}}>
+        <ProjectContext.Provider value={{projects,addProject,updateProjectContent}}>
         {children}
         </ProjectContext.Provider>
     )
