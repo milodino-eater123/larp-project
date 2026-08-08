@@ -1,11 +1,12 @@
 import {useState,useContext} from 'react';
-import {ProjectContext} from '../context/ProjectProvider';
+import {ProjectContext} from '../../context/ProjectProvider';
 
 export default function ProjectDropdown({openPopup,selectedProject,setSelectedProject}){
     const {projects} = useContext(ProjectContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     return (
-    isDropdownOpen ? <div className="dropdown">
+   
+    isDropdownOpen ? <div className="flex flex-col justify-center items-center">
                 {projects.map(project => (
                     <button onClick={() => 
                     {setSelectedProject(project.id) 
@@ -18,7 +19,7 @@ export default function ProjectDropdown({openPopup,selectedProject,setSelectedPr
                     + Add Project
                 </button>
 
-            </div> : (
+            </div> : 
 
             selectedProject ?
              <button onClick={()=> setIsDropdownOpen(true)}>
@@ -28,6 +29,5 @@ export default function ProjectDropdown({openPopup,selectedProject,setSelectedPr
             <button onClick={()=> setIsDropdownOpen(true)}>
                 Select Project v               
             </button>
-            )
         )
         }

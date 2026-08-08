@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { TaskProvider } from './context/TaskProvider';
-import {Home} from './pages/Home';
-import {ProjectPage} from './pages/ProjectPage';
+import { Home } from './pages/Home/Home';
+import { ProjectPage } from './pages/ProjectPage';
 import { ProjectProvider } from './context/ProjectProvider';
 
 export function App(){
