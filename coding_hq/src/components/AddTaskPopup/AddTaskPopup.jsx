@@ -12,20 +12,19 @@ export default function AddTaskPopup(){
     return (
 
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
-        <div className="fixed bg-white w-[70vw] h-[50vh] flex flex-col justify-between items-left">
+        <div className="fixed bg-white w-120 p-6 gap-12 flex flex-col justify-between items-left">
 
         <button onClick={()=>setAddingTask(false)} className="absolute top-0 right-0 m-4 text-black">X</button>
         
         <span className="font-bold text-2xl">Add Task</span>
-        <label>
-            Task Name:
-            <input value={taskName}onChange={(e)=>setTaskName(e.target.value)} />
-        </label>
 
-        <label>
-            Project:
-        </label>
-        <div>
+        <div className="gap-1 flex flex-col">
+            <label>Task Name:</label>
+            <input className="p-2 border" value={taskName}onChange={(e)=>setTaskName(e.target.value)} />        
+        </div>
+
+        <div className="gap-1 flex flex-col">
+            <label>Project:</label>
             <ProjectDropdown 
             openPopup={()=>setIsAddingProject(true)}
             setSelectedProject={setSelectedProject}
@@ -33,14 +32,14 @@ export default function AddTaskPopup(){
             />
         </div>
 
-        <button disabled={!taskName || !selectedProject} 
+        <button className="bg-light_blue font-bold p-3" disabled={!taskName || !selectedProject} 
     onClick={()=>
         {addTask(taskName,selectedProject)
          setTaskName('') 
          setAddingTask(false)
         }}>
         Add Task
-    </button>
+        </button>
     </div>
 
 

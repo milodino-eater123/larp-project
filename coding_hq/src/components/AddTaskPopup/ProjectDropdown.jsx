@@ -6,28 +6,32 @@ export default function ProjectDropdown({openPopup,selectedProject,setSelectedPr
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     return (
    
-    isDropdownOpen ? <div className="flex flex-col justify-center items-center">
+    isDropdownOpen ? 
+            <div className="flex flex-col">
                 {projects.map(project => (
-                    <button onClick={() => 
+                    <button className="border p-3 w-full flex justify-start" onClick={() => 
                     {setSelectedProject(project.id) 
                      setIsDropdownOpen(false)
-                    }}>
+                    }} key={project.id}>
                     {project.name}
                     </button>
                 ))}
-                <button onClick={openPopup}>
+                <button className="border p-3 w-full flex justify-start " onClick={openPopup}>
                     + Add Project
                 </button>
-
-            </div> : 
+            </div> 
+            : 
 
             selectedProject ?
-             <button onClick={()=> setIsDropdownOpen(true)}>
+             <button className="border p-3 flex justify-start" onClick={()=> setIsDropdownOpen(true)}>
                 {projects.find(p => p.id === selectedProject)?.name}
              </button> 
             :
             <button onClick={()=> setIsDropdownOpen(true)}>
-                Select Project v               
+                <div className="border p-3 flex justify-between">
+                    <span>Select Project</span>
+                    <span>v</span>
+                </div>           
             </button>
         )
         }

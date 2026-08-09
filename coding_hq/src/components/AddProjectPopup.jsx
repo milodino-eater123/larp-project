@@ -8,17 +8,21 @@ export default function addProjectPopup({closePopup}){
     const [projectName,setProjectName] = useState('');
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
-        <div className="fixed bg-white w-[70vw] h-[50vh] flex flex-col justify-between items-center">
+        <div className="fixed inset-0 bg-black/90 flex justify-center items-center">
+        <div className="fixed bg-white w-120 p-6 gap-12 flex flex-col justify-between ">
         <button onClick={closePopup} className="absolute top-0 right-0 m-4 text-black">X</button>
-        
-            <label>
-                Project Name:
-                <input 
+
+            <span className="font-bold text-2xl">Add Project</span>
+
+            <div className="gap-1 flex flex-col">
+                <label>Project Name:</label>
+                <input className="p-2 border"
                     value={projectName}
                     onChange={(e) => setProjectName(e.target.value)}
-            />
-            <button disabled={!projectName} 
+                />
+            </div>
+
+            <button className="bg-light_blue font-bold p-3" disabled={!projectName} 
             onClick={()=> {
                 addProject(projectName)
                 setProjectName('')
@@ -26,7 +30,7 @@ export default function addProjectPopup({closePopup}){
                 }}>
                 Add Project
             </button>
-        </label>
+        
     </div>
     </div>)
 
