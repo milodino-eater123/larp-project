@@ -11,8 +11,8 @@ export default function AddTaskPopup(){
 
     return (
 
-    <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
-        <div className="fixed bg-white w-120 p-6 gap-12 flex flex-col justify-between items-left">
+    <div className="fixed z-0 inset-0 bg-black/50 flex justify-center items-center">
+        <div className="fixed z-10 bg-white w-120 p-6 gap-12 flex flex-col justify-between items-left">
 
         <button onClick={()=>setAddingTask(false)} className="absolute top-0 right-0 m-4 text-black">X</button>
         
@@ -32,7 +32,7 @@ export default function AddTaskPopup(){
             />
         </div>
 
-        <button className="bg-light_blue font-bold p-3" disabled={!taskName || !selectedProject} 
+        <button className="bg-light_blue disabled:bg-gray-200 font-bold p-3" disabled={!taskName || !selectedProject} 
     onClick={()=>
         {addTask(taskName,selectedProject)
          setTaskName('') 

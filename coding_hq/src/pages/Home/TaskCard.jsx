@@ -8,7 +8,7 @@ export default function TaskCard(){
     const task_text = tasks[0] ? tasks[0].name : "No tasks yet";
     const id = tasks[0] ? tasks[0].id : null;
     return(
-        <div className="bg-[#3D485A] hover:bg-[#465267] shadow-2xl rounded-4xl w-[90vw] aspect-square relative ">
+        <div onClick={() => navigate(`/project/${id}`)} disabled={!tasks[0]} className="bg-[#3D485A] shadow-2xl rounded-4xl w-[90vw] aspect-square relative">
 
         <div className="absolute top-0 right-0 m-3">
         <EditButton/>
@@ -16,11 +16,14 @@ export default function TaskCard(){
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         {isEditing ? 
-            <input defaultValue={task_text} onChange={(e)=>editTask(e.target.value,0)} /> 
+            <input className = "outline-none text-5xl" defaultValue={task_text} 
+            onChange={(e)=>{
+                editTask(e.target.value,0);
+            }}
+            onClick={(e)=>e.stopPropagation()} /> 
     :
-        <button className="placeholder" onClick={() => navigate(`/project/${id}`)} disabled={!tasks[0]}>
-            {task_text}
-        </button>}
+            <span className="text-5xl">{task_text}</span>
+        }
         </div>
 
         </div>

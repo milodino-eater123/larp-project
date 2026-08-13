@@ -2,7 +2,6 @@ import { createContext, useState } from 'react';
 export const TaskContext = createContext();
 export function TaskProvider({children}){
     const [tasks,setTasks]=useState([]);
-    const [projects,setProjects] = useState([]);
     const [isEditing,setIsEditing] = useState(false);
     const [addingTask,setAddingTask] = useState(false);
     function addTask(task_name,project_id){
@@ -18,11 +17,8 @@ export function TaskProvider({children}){
             return copy;
         })
     }
-    function addProject(name){
-        setProjects(prev=>[...prev,{name:name,content:'',id:crypto.randomUUID()}])
-    }
     return (
-        <TaskContext.Provider value={{tasks,addTask,deleteTask,editTask,projects,addProject,isEditing,setIsEditing,addingTask,setAddingTask}}>
+        <TaskContext.Provider value={{tasks,addTask,deleteTask,editTask,isEditing,setIsEditing,addingTask,setAddingTask}}>
         {children}
         </TaskContext.Provider>
     )
