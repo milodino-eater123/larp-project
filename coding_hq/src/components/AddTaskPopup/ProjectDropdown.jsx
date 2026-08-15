@@ -1,7 +1,7 @@
 import {useState,useContext} from 'react';
 import {ProjectContext} from '../../context/ProjectProvider';
 
-export default function ProjectDropdown({openPopup,isDropdownOpen,setIsDropdownOpen,selectedProject,setSelectedProject}){
+export default function ProjectDropdown({setIsAddingProject,isDropdownOpen,setIsDropdownOpen,selectedProject,setSelectedProject}){
     const {projects} = useContext(ProjectContext);
     return (
             <div>
@@ -27,7 +27,7 @@ export default function ProjectDropdown({openPopup,isDropdownOpen,setIsDropdownO
                     {project.name}
                     </button>
                 ))}
-                <button className="border h-8 p-1 w-full flex justify-start " onClick={openPopup}>
+                <button className="border h-8 p-1 w-full flex justify-start " onClick={() => setIsAddingProject(true)}>
                     + Add Project
                 </button>
             </div> 

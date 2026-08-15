@@ -31,7 +31,7 @@ export default function AddTaskPopup(){
         <div className="gap-0.5 flex flex-col">
             <label>Project:</label>
             <ProjectDropdown 
-            openPopup={()=>setIsAddingProject(true)}
+            setIsAddingProject={setIsAddingProject}
             setSelectedProject={setSelectedProject}
             selectedProject={selectedProject}
             isDropdownOpen={isDropdownOpen}
@@ -48,7 +48,7 @@ export default function AddTaskPopup(){
         Add Task
         </button>
     </div>
-    {isAddingProject && <AddProjectPopup handleNewProject={handleNewProject} closePopup={() => setIsAddingProject(false)}/>}
+    {isAddingProject && <AddProjectPopup handleNewProject={handleNewProject} setisAddingProject={setIsAddingProject}/>}
 </div>
     )
 }

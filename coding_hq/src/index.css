@@ -5,3 +5,7 @@
   --color-dark_blue: #252B37;
   --color-light_blue: #AAC7FF;
 }
+
+html {
+  background-color: #333C4D;
+}
