@@ -4,7 +4,9 @@ export function ProjectProvider({children}){
     const [projects,setProjects] = useState([]);
 
     function addProject(name){
-        setProjects(prev=>[...prev,{name:name,content:'',id:crypto.randomUUID()}])
+        const newProject = {name:name,content:'',id:crypto.randomUUID()};
+        setProjects(prev=>[...prev,newProject]);
+        return newProject.id;
     }
     function deleteProject(projectId){
         setProjects(prev=>prev.filter(proj=>proj.id !== projectId))

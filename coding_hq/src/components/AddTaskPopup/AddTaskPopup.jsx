@@ -8,7 +8,12 @@ export default function AddTaskPopup(){
     const [selectedProject,setSelectedProject] = useState();
     const [isAddingProject,setIsAddingProject] = useState(false);
     const [taskName,setTaskName] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    function handleNewProject(id){
+        setSelectedProject(id);
+        setIsDropdownOpen(false);
+    }
     return (
 
     <div className="w-full fixed z-0 inset-0 bg-black/50 flex justify-center items-center">
@@ -29,6 +34,8 @@ export default function AddTaskPopup(){
             openPopup={()=>setIsAddingProject(true)}
             setSelectedProject={setSelectedProject}
             selectedProject={selectedProject}
+            isDropdownOpen={isDropdownOpen}
+            setIsDropdownOpen={setIsDropdownOpen}
             />
         </div>
 
@@ -41,7 +48,7 @@ export default function AddTaskPopup(){
         Add Task
         </button>
     </div>
-    {isAddingProject && <AddProjectPopup closePopup={() => setIsAddingProject(false)}/>}
+    {isAddingProject && <AddProjectPopup handleNewProject={handleNewProject} closePopup={() => setIsAddingProject(false)}/>}
 </div>
     )
 }

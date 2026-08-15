@@ -2,7 +2,7 @@
 import {ProjectContext} from '../context/ProjectProvider';
 import {useState,useContext} from 'react';
 
-export default function AddProjectPopup({closePopup}){
+export default function AddProjectPopup({handleNewProject,closePopup}){
     
     const {addProject} = useContext(ProjectContext);
     const [projectName,setProjectName] = useState('');
@@ -24,9 +24,10 @@ export default function AddProjectPopup({closePopup}){
 
             <button className="bg-light_blue disabled:bg-gray-200 font-bold p-3 active:scale-95 active:opacity-75 transition-all" disabled={!projectName} 
             onClick={()=> {
-                addProject(projectName)
+                const projectId = addProject(projectName)
                 setProjectName('')
                 closePopup()
+                handleNewProject(projectId)
                 }}>
                 Add Project
             </button>

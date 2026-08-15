@@ -1,9 +1,8 @@
 import {useState,useContext} from 'react';
 import {ProjectContext} from '../../context/ProjectProvider';
 
-export default function ProjectDropdown({openPopup,selectedProject,setSelectedProject}){
+export default function ProjectDropdown({openPopup,isDropdownOpen,setIsDropdownOpen,selectedProject,setSelectedProject}){
     const {projects} = useContext(ProjectContext);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     return (
             <div>
             {selectedProject ?
