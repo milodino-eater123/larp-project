@@ -1,8 +1,12 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 export const ProjectContext = createContext();
 export function ProjectProvider({children}){
-    const [projects,setProjects] = useState([]);
+    const [projects,setProjects] = useState( ()=>JSON.parse(localStorage.getItem("projects")) || []);
 
+    useEffect(()=>{
+        localStorage.setItem("projects",JSON.stringify(projects));
+    },[projects]);
+                
     function addProject(name){
         const newProject = {name:name,content:'',id:crypto.randomUUID()};
         setProjects(prev=>[...prev,newProject]);
