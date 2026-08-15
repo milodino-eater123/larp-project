@@ -8,20 +8,16 @@ export function ProjectPage(){
     const {projects,setProjects,updateProjectContent} = useContext(ProjectContext);
     
     const project = projects.find(p=>p.id ===id);
-    const [curContent,setCurContent] = useState(project.content);
     return (
-    <div className = "flex flex-col h-screen gap-3">
-        <div className = "bg-light_blue flex justify-between p-4">
+    <div className = "overflow-y-auto bg-black flex flex-col h-screen gap-3">
+        <div className = " flex justify-between p-7">
         <ReturnHomeButton />
-        <h1 className="text-3xl font-bold">{project.name}</h1>
-        <button onClick={()=>{updateProjectContent(id, curContent);
-        }}>
-            <Check className="w-10 h-10"/>
-        </button>
+        <h1 className="text-white text-3xl font-bold">{project.name}</h1>
+        <div></div>
         </div>
-        <textarea className = "outline-none w-full h-full"
-            value={curContent}
-            onChange={(e) => setCurContent(e.target.value)}
+        <textarea className = "text-white placeholder:text-gray-500 outline-none w-full h-full"
+            value={project.content}
+            onChange={(e) => updateProjectContent(id, e.target.value)}
         />
     </div>
 

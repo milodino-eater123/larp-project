@@ -5,10 +5,10 @@ export default function TaskButtons(){
     const { tasks, addTask, deleteTask, addingTask, setAddingTask } = useContext(TaskContext);
     return(
         <div className ='flex w-[80vw] justify-around'>
-        <button className="rounded-4xl bg-[#9AA5B3] border-2" onClick={() => setAddingTask(true)}>
+        <button className="rounded-4xl bg-[#9AA5B3] border-2 active:scale-95 active:opacity-75 transition-all" onClick={() => setAddingTask(true)}>
             <Plus className="w-20 h-20 p-2"/>
         </button>
-        <button className="rounded-4xl bg-[#22C55E] disabled:bg-[#22C55E]/20 border-2" onClick = {() => deleteTask(0)} disabled={!tasks[0]}>
+        <button className="rounded-4xl bg-[#22C55E] disabled:bg-[#22C55E]/20 border-2 active:scale-95 active:opacity-75 transition-all" onClick = {() => deleteTask(0)} disabled={!tasks[0]}>
             <Check className="w-20 h-20 p-2"/>
         </button>
         </div>
