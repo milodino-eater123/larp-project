@@ -11,19 +11,19 @@ export default function AddTaskPopup(){
 
     return (
 
-    <div className="fixed z-0 inset-0 bg-black/50 flex justify-center items-center">
-        <div className="fixed z-10 bg-white w-120 p-6 gap-12 flex flex-col justify-between items-left">
+    <div className="w-full fixed z-0 inset-0 bg-black/50 flex justify-center items-center">
+        <div className="fixed z-10 bg-white w-[65vw] py-4 px-5 gap-7 flex flex-col justify-between items-left">
 
         <button onClick={()=>setAddingTask(false)} className="absolute top-0 right-0 m-4 text-black active:scale-95 active:opacity-75 transition-all">X</button>
         
-        <span className="font-bold text-2xl">Add Task</span>
+        <span className="font-bold text-xl">Add Task</span>
 
-        <div className="gap-1 flex flex-col">
+        <div className="gap-0.5 flex flex-col">
             <label>Task Name:</label>
-            <input className="p-2 border" value={taskName}onChange={(e)=>setTaskName(e.target.value)} />        
+            <input className="p-1 border" value={taskName}onChange={(e)=>setTaskName(e.target.value)} />        
         </div>
 
-        <div className="gap-1 flex flex-col">
+        <div className="gap-0.5 flex flex-col">
             <label>Project:</label>
             <ProjectDropdown 
             openPopup={()=>setIsAddingProject(true)}
@@ -32,7 +32,7 @@ export default function AddTaskPopup(){
             />
         </div>
 
-        <button className="bg-light_blue disabled:bg-gray-200 font-bold p-3 active:scale-95 active:opacity-75 transition-all" disabled={!taskName || !selectedProject} 
+        <button className="w-full h-8.5 bg-light_blue disabled:bg-gray-200 font-bold p-1 active:scale-95 active:opacity-75 transition-all" disabled={!taskName || !selectedProject} 
     onClick={()=>
         {addTask(taskName,selectedProject)
          setTaskName('') 
@@ -41,10 +41,7 @@ export default function AddTaskPopup(){
         Add Task
         </button>
     </div>
-
-
     {isAddingProject && <AddProjectPopup closePopup={() => setIsAddingProject(false)}/>}
-
 </div>
     )
 }

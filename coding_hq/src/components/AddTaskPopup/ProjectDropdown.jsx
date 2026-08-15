@@ -7,28 +7,28 @@ export default function ProjectDropdown({openPopup,selectedProject,setSelectedPr
     return (
             <div>
             {selectedProject ?
-             <button className="w-full bg-gray-300 h-12 border p-3 flex justify-start" onClick={()=> setIsDropdownOpen(true)}>
+             <button className="h-8 w-full bg-gray-300 border p-1 flex justify-start" onClick={()=> setIsDropdownOpen(true)}>
                 {projects.find(p => p.id === selectedProject)?.name}
              </button> 
             :
-            <button className="w-full bg-gray-300" onClick={()=> setIsDropdownOpen(true)}>
-                <div className="h-12 border p-3 flex justify-between">
+            <button className="h-8 w-full bg-gray-300" onClick={()=> setIsDropdownOpen(true)}>
+                <div className="border p-1 flex justify-between">
                     <span>Select Project</span>
                     <span>v</span>
                 </div>           
             </button>
 }
             {isDropdownOpen && 
-            <div className="flex flex-col max-h-48 overflow-y-auto">
+            <div className="flex flex-col max-h-32 overflow-y-auto">
                 {projects.map(project => (
-                    <button className="h-12 border p-3 w-full flex justify-start" onClick={() => 
+                    <button className="border h-8 p-1 w-full flex justify-start" onClick={() => 
                     {setSelectedProject(project.id) 
                      setIsDropdownOpen(false)
                     }} key={project.id}>
                     {project.name}
                     </button>
                 ))}
-                <button className="h-12 border p-3 w-full flex justify-start " onClick={openPopup}>
+                <button className="border h-8 p-1 w-full flex justify-start " onClick={openPopup}>
                     + Add Project
                 </button>
             </div> 
