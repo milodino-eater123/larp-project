@@ -9,7 +9,7 @@ export function ProjectPage(){
     
     const project = projects.find(p=>p.id ===id);
     return (
-    <div className = "overflow-y-auto bg-black flex flex-col h-screen">
+    <div className = "overflow-y-auto bg-black flex flex-col h-screen pt-6">
         <div className = "flex justify-between p-7">
         <ReturnHomeButton />
         <h1 className="text-white text-3xl font-bold">{project.name}</h1>
