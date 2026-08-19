@@ -20,11 +20,11 @@ function Task({task,openTaskId,setOpenTaskId}){
     const longPressEvent = useLongPress(() => setOpenTaskId(task.id))
     return(
     <div>
-        {task.name}
+        <button onClick={setOpenTaskId}>{task.name}</button>
         {isOpen && 
-        <div {...longPressEvent}>
-            <button>edit</button>
-            <button>delete</button>
+        <div>
+        <button>edit</button>
+        <button>delete</button>
         </div>
 }
     </div>
