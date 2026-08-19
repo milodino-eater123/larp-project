@@ -8,7 +8,7 @@ export default function TaskList() {
 
     return (
         tasks.map((task) =>{ 
-            <Task task={task} openTaskId={openTaskId} setOpenTaskId={setOpenTaskId}/>
+            <Task key={task.id} task={task} openTaskId={openTaskId} setOpenTaskId={setOpenTaskId}/>
 }
 )
     )

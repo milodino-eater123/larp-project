@@ -8,7 +8,7 @@ export default function ProjectList() {
 
     return (
         projects.map((project) =>
-            <Project project={project} openProjectId={openProjectId} setOpenProjectId={setOpenProjectId}/>
+            <Project key={project.id} project={project} openProjectId={openProjectId} setOpenProjectId={setOpenProjectId}/>
 )
     )
 }
