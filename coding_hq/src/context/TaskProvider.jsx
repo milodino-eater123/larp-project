@@ -21,7 +21,7 @@ export function TaskProvider({children}){
         })
     }
     return (
-        <TaskContext.Provider value={{tasks,addTask,deleteTask,editTask,isEditing,setIsEditing,addingTask,setAddingTask}}>
+        <TaskContext.Provider value={{tasks,setTasks,addTask,deleteTask,editTask,isEditing,setIsEditing,addingTask,setAddingTask}}>
         {children}
         </TaskContext.Provider>
     )

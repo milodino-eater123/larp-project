@@ -6,15 +6,15 @@ import { ProjectProvider } from './context/ProjectProvider';
 
 export function App(){
     return(
-        <ProjectProvider>
         <TaskProvider>
+        <ProjectProvider>
             <BrowserRouter>
             <Routes>
                 <Route path="/" element = {<Home/>}/>
                 <Route path="/project/:id" element = {<ProjectPage/>}/>
             </Routes>
             </BrowserRouter>
-        </TaskProvider>
         </ProjectProvider>
+        </TaskProvider>
     )
 }
