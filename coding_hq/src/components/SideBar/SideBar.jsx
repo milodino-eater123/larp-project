@@ -4,7 +4,7 @@ import { ProjectContext} from '../../context/ProjectProvider';
 import { useLongPress } from '../../hooks/useLongPress';
 import ProjectList from './ProjectList'
 import TaskList from './TaskList'
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft,List } from "lucide-react";
 
 
 export default function SideBar(){
@@ -15,7 +15,7 @@ export default function SideBar(){
         isSideBarOpen ? 
         <OpenSideBar setIsSideBarOpen={setIsSideBarOpen}/>
         :
-        <button className="bg-black w-10 h-10" onClick={() => setIsSideBarOpen(true)}></button> 
+        <button className="fixed left-2 top-2 rounded-xl outline outline-black w-10 h-10 flex items-center justify-center" onClick={() => setIsSideBarOpen(true)}><List/></button> 
     )
 
 }
@@ -23,7 +23,7 @@ export default function SideBar(){
 function OpenSideBar ({setIsSideBarOpen}) {
     const [mode,setMode] = useState("projects")
     return(
-        <div>
+        <div className="fixed h-full bg-black z-90 self-start">
             <button onClick={()=>setIsSideBarOpen(false)}><ChevronLeft className="bg-white w-10 h-10"/></button>
             <div>
                 <button onClick={()=>setMode("projects")}>projects</button>

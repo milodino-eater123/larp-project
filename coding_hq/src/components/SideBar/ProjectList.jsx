@@ -18,12 +18,19 @@ function Project({project,openProjectId,setOpenProjectId}){
     const isOpen = openProjectId === project.id;
     const longPressEvent = useLongPress(() => setOpenProjectId(project.id))
     return(
-    <div>
-        <span className="bg-red-300 h-10 w-10">{project.name}</span>
+    <div {...longPressEvent}>
+        <div className="bg-red-300 h-10 w-10">{project.name}</div>
         {isOpen && 
-        <div {...LongPressEvent}>
+        <div 
+        onClick={(e)=>
+        {e.stopPropagation();
+        setOpenProjectId(null);
+        }} 
+        className="fixed inset-0 z-100 bg-black/50">
+        <div className="bg-gray-400">
             <button>edit</button>
             <button onClick={deleteProject}>delete</button>
+        </div>
         </div>
 }
     </div>
