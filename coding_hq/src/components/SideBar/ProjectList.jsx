@@ -18,7 +18,7 @@ function Project({project,openProjectId,setOpenProjectId}){
     const isOpen = openProjectId === project.id;
     const longPressEvent = useLongPress(() => setOpenProjectId(project.id))
     return(
-    <div {...longPressEvent}>
+    <div {...longPressEvent} className="select-none touch-none" onContextMenu={(e) => e.preventDefault()}>
         <div className="bg-red-300 h-10 w-10">{project.name}</div>
         {isOpen && 
         <div 
