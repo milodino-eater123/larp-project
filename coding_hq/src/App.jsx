@@ -6,7 +6,7 @@ import { ProjectProvider } from './context/ProjectProvider';
 
 export function App(){
     return(
-        <div className="pt-[env(safe-area-inset-top)]">
+        <div>
         <TaskProvider>
         <ProjectProvider>
             <BrowserRouter>

@@ -15,7 +15,9 @@ export default function SideBar(){
         isSideBarOpen ? 
         <OpenSideBar setIsSideBarOpen={setIsSideBarOpen}/>
         :
-        <button className="rounded-xl outline outline-black flex items-center justify-center p-1.5" onClick={() => setIsSideBarOpen(true)}><List/></button> 
+        <div className="pt-[env(safe-area-inset-top,70px)]">
+        <button className="rounded-xl outline outline-black flex items-center justify-center p-1.5" onClick={() => setIsSideBarOpen(true)}><List/></button>
+        </div> 
     )
 
 }
