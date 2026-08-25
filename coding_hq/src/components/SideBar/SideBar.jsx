@@ -15,7 +15,7 @@ export default function SideBar(){
         isSideBarOpen ? 
         <OpenSideBar setIsSideBarOpen={setIsSideBarOpen}/>
         :
-        <button className="fixed left-2 top-2 rounded-xl outline outline-black w-10 h-10 flex items-center justify-center" onClick={() => setIsSideBarOpen(true)}><List/></button> 
+        <button className="rounded-xl outline outline-black flex items-center justify-center p-1.5" onClick={() => setIsSideBarOpen(true)}><List/></button> 
     )
 
 }
@@ -23,7 +23,7 @@ export default function SideBar(){
 function OpenSideBar ({setIsSideBarOpen}) {
     const [mode,setMode] = useState("projects")
     return(
-        <div className="fixed h-full bg-black z-90 self-start">
+        <div className="fixed left-0 top-0 bottom-0 bg-black z-90">
             <button onClick={()=>setIsSideBarOpen(false)}><ChevronLeft className="bg-white w-10 h-10"/></button>
             <div>
                 <button onClick={()=>setMode("projects")}>projects</button>
