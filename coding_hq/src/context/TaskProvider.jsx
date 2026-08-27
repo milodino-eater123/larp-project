@@ -8,17 +8,13 @@ export function TaskProvider({children}){
         localStorage.setItem("tasks",JSON.stringify(tasks));
     },[tasks]);
     function addTask(task_name,project_id){
-        setTasks(prev=>[...prev,{name:task_name,id:project_id,content:''}])
+        setTasks(prev=>[...prev,{name:task_name,id:crypto.randomUUID(),project_id:project_id,content:''}])
     }
-    function deleteTask(index){
-        setTasks(prev=>prev.filter((_,i)=>i !== index))
+    function deleteTask(task_id){
+        setTasks(prev=>prev.filter(task=>task.id !== task_id))
     }
-    function editTask(new_name,index){
-        setTasks(prev=>{
-            const copy = [...prev];
-            copy[index] = {name:new_name,id:copy[index].id};
-            return copy;
-        })
+    function editTask(new_name,id){
+        setTasks(prev=>prev.map(task=>task.id===id?{...task,name:new_name}:task))
     }
     return (
         <TaskContext.Provider value={{tasks,setTasks,addTask,deleteTask,editTask,isEditing,setIsEditing,addingTask,setAddingTask}}>

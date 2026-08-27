@@ -25,17 +25,25 @@ export default function SideBar(){
 function OpenSideBar ({setIsSideBarOpen}) {
     const [mode,setMode] = useState("projects")
     return(
-        <div className="fixed left-0 top-0 bottom-0 bg-black z-90">
-            <button onClick={()=>setIsSideBarOpen(false)}><ChevronLeft className="bg-white w-10 h-10"/></button>
-            <div>
-                <button onClick={()=>setMode("projects")}>projects</button>
-                <button onClick={()=>setMode("tasks")}>tasks</button>
+        <div className="fixed left-0 top-0 bottom-0 bg-dark_blue z-90 p-3 flex flex-col gap-5">
+            <div className="flex justify-end pt-[env(safe-area-inset-top)]">
+            <button onClick={()=>setIsSideBarOpen(false)}><ChevronLeft className=" text-black w-10 h-10"/></button>
             </div>
-        {mode==="projects" ?
-        <ProjectList/>
-        :
-        <TaskList/>
-        }
+            <div>
+                <button 
+                className={`border px-2 ${mode==="projects" ? "bg-[#5A6B80]":"bg-blue"}`}
+                onClick={()=>setMode("projects")}>projects</button>
+                <button 
+                className={`border px-2 ${mode==="tasks" ? "bg-[#5A6B80]":"bg-blue"}`}
+                onClick={()=>setMode("tasks")}>tasks</button>
+            </div>
+            <div>
+            {mode==="projects" ?
+            <ProjectList/>
+                :
+            <TaskList/>
+            }
+            </div>
         </div>
     )
 }

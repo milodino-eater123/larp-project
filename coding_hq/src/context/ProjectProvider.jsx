@@ -4,7 +4,7 @@ import { TaskContext } from './TaskProvider';
 export const ProjectContext = createContext();
 export function ProjectProvider({children}){
     const [projects,setProjects] = useState( ()=>JSON.parse(localStorage.getItem("projects")) || []);
-    const [tasks,setTasks] = useContext(TaskContext);
+    const {tasks,setTasks} = useContext(TaskContext);
 
     useEffect(()=>{
         localStorage.setItem("projects",JSON.stringify(projects));
@@ -17,13 +17,13 @@ export function ProjectProvider({children}){
     }
     function deleteProject(projectId){
         setProjects(prev=>prev.filter(proj=>proj.id !== projectId))
-        setTasks(prev=>prev.filter(task=>task.id !== projectId))
+        setTasks(prev=>prev.filter(task=>task.project_id !== projectId))
     }
     function updateProjectContent(projectId,newContent){
         setProjects(prev=>prev.map(proj=> proj.id === projectId ? {...proj,content:newContent} : proj))
     }
     return (
-        <ProjectContext.Provider value={{projects,addProject,updateProjectContent}}>
+        <ProjectContext.Provider value={{projects,addProject,deleteProject,updateProjectContent}}>
         {children}
         </ProjectContext.Provider>
     )

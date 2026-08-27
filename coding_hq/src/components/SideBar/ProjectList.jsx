@@ -18,20 +18,33 @@ function Project({project,openProjectId,setOpenProjectId}){
     const isOpen = openProjectId === project.id;
     const longPressEvent = useLongPress(() => setOpenProjectId(project.id))
     return(
-    <div {...longPressEvent} className="select-none touch-none" onContextMenu={(e) => e.preventDefault()}>
-        <div className="bg-red-300 h-10 w-10">{project.name}</div>
+    <div {...longPressEvent} className="relative select-none touch-none" onContextMenu={(e) => e.preventDefault()}>
+        <div className="border border-[#68758A] text-[#7D899B] py-1 px-1">{project.name}</div>
         {isOpen && 
+        <>
         <div 
         onClick={(e)=>
         {e.stopPropagation();
         setOpenProjectId(null);
         }} 
-        className="fixed inset-0 z-100 bg-black/50">
-        <div className="bg-gray-400">
-            <button>edit</button>
-            <button onClick={deleteProject}>delete</button>
+        className="fixed inset-0 z-100 bg-black/20">
         </div>
+        <div className="absolute z-101 bg-gray-400 flex flex-col rounded-2xl my-4 ml-1 border divide-y">
+            <button className="flex justify-start px-6 py-0.5"
+            onClick={(e)=>
+            {e.stopPropagation();
+             setOpenProjectId(null);
+            }
+            }>edit</button>
+            <button className="flex justify-start px-6 py-0.5" 
+            onClick={(e)=>
+        {e.stopPropagation();
+        setOpenProjectId(null);
+        deleteProject(project.id)
+        }}>delete</button>
         </div>
+        </>
+        
 }
     </div>
     )

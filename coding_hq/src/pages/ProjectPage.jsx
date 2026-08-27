@@ -6,8 +6,8 @@ import { Check } from 'lucide-react';
 export function ProjectPage(){
     const { id } = useParams();
     const {projects,setProjects,updateProjectContent} = useContext(ProjectContext);
-    
     const project = projects.find(p=>p.id ===id);
+
     return (
     <div className = "overflow-y-auto bg-black flex flex-col h-screen pt-6">
         <div className = "flex justify-between p-7">
