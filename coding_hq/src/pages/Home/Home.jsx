@@ -9,7 +9,7 @@ import SideBar from "../../components/SideBar/SideBar"
 export function Home(){
     const {addingTask} = useContext(TaskContext);
     return(
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen pb-[env(safe-area-inset-top)]">
             <div className="flex justify-start p-3"><SideBar/></div>
             <div className="bg-blue flex flex-col justify-center items-center grow gap-6">
                 <TaskCard />
