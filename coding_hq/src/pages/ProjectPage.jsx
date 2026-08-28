@@ -1,18 +1,22 @@
 import { useParams } from 'react-router-dom';
-import { useContext,useState} from 'react';
+import { useContext } from 'react';
 import { ProjectContext } from '../context/ProjectProvider';
 import ReturnHomeButton from '../components/ReturnHomeButton';
-import { Check } from 'lucide-react';
 export function ProjectPage(){
     const { id } = useParams();
-    const {projects,setProjects,updateProjectContent} = useContext(ProjectContext);
+    const {projects,updateProjectName,updateProjectContent} = useContext(ProjectContext);
     const project = projects.find(p=>p.id ===id);
 
+    if (!project) {
+        return (
+            <div className="h-screen flex justify-center items-center">Project not found</div>
+        )
+    }
     return (
     <div className = "overflow-y-auto bg-black flex flex-col h-screen pt-6">
         <div className = "flex justify-between p-7">
         <ReturnHomeButton />
-        <h1 className="text-white text-3xl font-bold">{project.name}</h1>
+        <input className="w-full text-white text-3xl font-bold text-center" defaultValue={project.name} onChange={(e)=>updateProjectName(id,e.target.value)}/>
         <div></div>
         </div>
         <textarea className = "text-white placeholder:text-gray-500 outline-none w-full h-full p-5"

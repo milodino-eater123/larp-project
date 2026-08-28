@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { TaskContext } from '../../context/TaskProvider';
 import {Check, Plus} from 'lucide-react';
 export default function TaskButtons(){
-    const { tasks, addTask, deleteTask, addingTask, setAddingTask } = useContext(TaskContext);
+    const { tasks, deleteTask, setAddingTask } = useContext(TaskContext);
     const id = tasks[0] ? tasks[0].id:null
     return(
         <div className ='flex w-[80vw] justify-around'>

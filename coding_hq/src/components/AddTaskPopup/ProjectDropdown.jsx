@@ -1,4 +1,4 @@
-import {useState,useContext} from 'react';
+import {useContext} from 'react';
 import {ProjectContext} from '../../context/ProjectProvider';
 
 export default function ProjectDropdown({setIsAddingProject,isDropdownOpen,setIsDropdownOpen,selectedProject,setSelectedProject}){

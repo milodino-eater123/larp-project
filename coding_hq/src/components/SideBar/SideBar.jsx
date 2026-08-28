@@ -1,15 +1,10 @@
-import { useContext, useState } from 'react';
-import { TaskContext } from '../../context/TaskProvider';
-import { ProjectContext} from '../../context/ProjectProvider';
-import { useLongPress } from '../../hooks/useLongPress';
+import { useState } from 'react';
 import ProjectList from './ProjectList'
 import TaskList from './TaskList'
 import { ChevronLeft,List } from "lucide-react";
 
 
 export default function SideBar(){
-    const tasks = useContext(TaskContext);
-    const projects = useContext(ProjectContext);
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     return (
         isSideBarOpen ? 
@@ -29,12 +24,12 @@ function OpenSideBar ({setIsSideBarOpen}) {
             <div className="flex justify-end pt-[env(safe-area-inset-top)]">
             <button onClick={()=>setIsSideBarOpen(false)}><ChevronLeft className=" text-black w-10 h-10"/></button>
             </div>
-            <div>
+            <div className="flex justify-center">
                 <button 
-                className={`border px-2 ${mode==="projects" ? "bg-[#5A6B80]":"bg-blue"}`}
+                className={`border px-5 ${mode==="projects" ? "bg-[#5A6B80]":"bg-blue"}`}
                 onClick={()=>setMode("projects")}>projects</button>
                 <button 
-                className={`border px-2 ${mode==="tasks" ? "bg-[#5A6B80]":"bg-blue"}`}
+                className={`border px-5 ${mode==="tasks" ? "bg-[#5A6B80]":"bg-blue"}`}
                 onClick={()=>setMode("tasks")}>tasks</button>
             </div>
             <div>

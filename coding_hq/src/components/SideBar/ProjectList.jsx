@@ -14,12 +14,15 @@ export default function ProjectList() {
 }
 
 function Project({project,openProjectId,setOpenProjectId}){
-    const {deleteProject} = useContext(ProjectContext);
+    const {deleteProject,updateProjectName} = useContext(ProjectContext);
     const isOpen = openProjectId === project.id;
-    const longPressEvent = useLongPress(() => setOpenProjectId(project.id))
+    const longPressEvent = useLongPress(() => setOpenProjectId(project.id));
+
     return(
     <div {...longPressEvent} className="relative select-none touch-none" onContextMenu={(e) => e.preventDefault()}>
-        <div className="border border-[#68758A] text-[#7D899B] py-1 px-1">{project.name}</div>
+        <input className="border border-[#68758A] text-[#7D899B] py-1 px-2" defaultValue={project.name}
+        onChange={(e)=>updateProjectName(project.id,e.target.value)}/>
+
         {isOpen && 
         <>
         <div 

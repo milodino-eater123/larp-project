@@ -19,11 +19,14 @@ export function ProjectProvider({children}){
         setProjects(prev=>prev.filter(proj=>proj.id !== projectId))
         setTasks(prev=>prev.filter(task=>task.project_id !== projectId))
     }
+    function updateProjectName(projectId,newName){
+        setProjects(prev=>prev.map(proj=> proj.id === projectId ? {...proj,name:newName} : proj))
+    }
     function updateProjectContent(projectId,newContent){
         setProjects(prev=>prev.map(proj=> proj.id === projectId ? {...proj,content:newContent} : proj))
     }
     return (
-        <ProjectContext.Provider value={{projects,addProject,deleteProject,updateProjectContent}}>
+        <ProjectContext.Provider value={{projects,addProject,deleteProject,updateProjectName,updateProjectContent}}>
         {children}
         </ProjectContext.Provider>
     )

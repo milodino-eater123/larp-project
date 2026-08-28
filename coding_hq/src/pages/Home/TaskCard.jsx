@@ -3,7 +3,7 @@ import {TaskContext} from '../../context/TaskProvider';
 import { useNavigate } from "react-router-dom";
 import { EditButton } from './EditButton';
 export default function TaskCard(){
-    const {tasks,setTasks,editTask,isEditing} = useContext(TaskContext);
+    const {tasks,editTask,isEditing} = useContext(TaskContext);
     const navigate = useNavigate();
     const task_text = tasks[0] ? tasks[0].name : "No tasks yet";
     const project_id = tasks[0] ? tasks[0].project_id : null;
